@@ -1,0 +1,94 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "home-page;land-on-playwright-website",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Land on playwright website",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 81084
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 48355124
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I am on the playwright website",
+            "match": {
+              "location": "src/steps/playwright/home.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 682539709
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "the text \"Playwright\" is visible",
+            "match": {
+              "location": "src/steps/playwright/home.ts:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 21786166
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 6126958
+            },
+            "embeddings": [
+              {
+                "data": "Status: PASSED. Duration:0s",
+                "mime_type": "text/plain"
+              }
+            ]
+          }
+        ],
+        "tags": [
+          {
+            "name": "@foo",
+            "line": 1
+          },
+          {
+            "name": "@debug",
+            "line": 4
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "home-page",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Home page",
+    "tags": [
+      {
+        "name": "@foo",
+        "line": 1
+      }
+    ],
+    "uri": "features/playwright/home.feature"
+  }
+]
