@@ -10,7 +10,8 @@ export interface ICustomWorld extends World {
   debug: boolean;
   feature?: messages.Pickle;
   context?: BrowserContext;
-  page?: Page;
+  pageObj?: Page;
+  page: () => Page;
 
   testName?: string;
   startTime?: Date;
@@ -24,6 +25,17 @@ export class CustomWorld extends World implements ICustomWorld {
   constructor(options: IWorldOptions) {
     super(options);
   }
+
+  pageObj?: Page;
+
+  page() {
+    if (!this.pageObj) {
+      throw new Error('No page is defined!');
+    }
+
+    return this.pageObj;
+  }
+
   debug = false;
 }
 
