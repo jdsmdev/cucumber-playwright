@@ -36,7 +36,7 @@ export class CustomWorld extends World implements ICustomWorld {
     return this.pageObj;
   }
 
-  debug = false;
+  debug = process.env.DEBUG ? true : false;
 }
 
 setWorldConstructor(CustomWorld);

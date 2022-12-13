@@ -1,9 +1,6 @@
-# cucumber7-ts-starter
+# cucumber-playwright-starter
 
-[![Build Status](https://travis-ci.org/hdorgeval/cucumber7-ts-starter.svg?branch=main)](https://travis-ci.org/hdorgeval/cucumber7-ts-starter)
-[![Build status](https://ci.appveyor.com/api/projects/status/v7ing1c5m9fr0fjf?svg=true)](https://ci.appveyor.com/project/hdorgeval/cucumber7-ts-starter)
-
-Starter project to write and debug cucumber-js v7 features in TypeScript language
+Starter project to write and debug cucumber-js features using playwright in TypeScript
 
 ## After cloning the repo
 
@@ -11,32 +8,18 @@ Starter project to write and debug cucumber-js v7 features in TypeScript languag
 
 ## To execute the tests locally
 
-- run the command `npm test`.
+- run the command `npm test <FEATURES>` to execute a feature.
+- run the command `npm run test:all` to execute all scenarios.
+- run the command `npm run test:parallel <NUMBER_OF_WORKERS>` to execute all scenarios in parallel.
 
-## To choose a reporter
+## To configure cucumber
 
-The last reporter/formatter found on the cucumber-js command-line wins:
-
-```text
---format summary --format @cucumber/pretty-formatter --format cucumber-console-formatter
-```
-
-In [package.json](package.json) file, modify the `cucumber` script to keep only your preferred formatter.
+In the [cucumber.mjs](cucumber.mjs) file, you can modify reporting/plugins/formatters/etc. on the cucumber configuration.
 
 ## To debug a scenario in Visual Studio Code
 
-- tag the scenario with `@debug`
 - set the breakpoints in the typescript code
-- Start debugging
-
-## To run only specific scenarios
-
-- tag the scenario(s) with `@only`
-- run the command `npm run only`.
-
-## To ignore a scenario
-
-- tag the scenario with `@ignore`
+- run the command `npm test:debug <FEATURES>`
 
 ## To check for typescript, linting and gherkin errors
 
@@ -72,18 +55,3 @@ In [package.json](package.json) file, modify the `cucumber` script to keep only 
     return 'pending';
   });
   ```
-
-## To use a custom option on the CLI
-
-With cucumber-js v7, you cannot have anymore custom options on the CLI.
-This is a breaking change with cucumber-js v6.
-
-You must instead use environment variables.
-
-When running your tests localy, you can setup environment variables by customizing the file [set-environment-variables.ts](env/set-environment-variables.ts).
-
-When running on a CI, you should setup your jobs with the expected environment variables.
-
-## To use a custom World Objet
-
-- cutomize the given Custom World Object : [custom-world](world/custom-world.ts)

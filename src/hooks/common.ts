@@ -14,7 +14,7 @@ import { ensureDir } from 'fs-extra';
 let browser: ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
 const TRACES_DIR = 'traces';
 
-setDefaultTimeout(config.timeout || -1);
+setDefaultTimeout(process.env.DEBUG ? -1 : config.timeout || -1);
 
 BeforeAll(async function () {
   const browserConfig = config.projects ? config.projects[0].name : 'chromium';
@@ -25,15 +25,6 @@ BeforeAll(async function () {
   }
 
   await ensureDir(TRACES_DIR);
-});
-
-Before({ tags: '@ignore' }, async function () {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return 'skipped' as any;
-});
-
-Before({ tags: '@debug' }, async function (this: ICustomWorld) {
-  this.debug = true;
 });
 
 Before(async function (this: ICustomWorld, { pickle }: ITestCaseHookParameter) {

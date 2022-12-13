@@ -4,7 +4,7 @@
   "description": "Starter project to write and debug cucumber-js features using playwright in TypeScript",
   "main": "index.ts",
   "scripts": {
-    "build": "rimraf build && npm run format && npm run lint && tsc && npm run cucumber-check",
+    "build": "rimraf build && npm run format && npm run lint && tsc && npm run check",
     "check": "cucumber-js features/**/*.feature --dry-run --format progress --format progress-bar",
     "format": "prettier --write \"**/*.{ts,tsx,css,html}\" ",
     "lint": "eslint ./ --ext .js,.ts,.tsx --format visualstudio --no-color --max-warnings 10 --report-unused-disable-directives",
@@ -13,7 +13,9 @@
     "snippets": "cucumber-js features/**/*.feature --dry-run --format snippets",
     "steps-usage": "cucumber-js features/**/*.feature --dry-run --format usage",
     "test": "cucumber-js",
-    "testall": "npm run test features/**/*.feature"
+    "test:all": "npm run test features/**/*.feature",
+    "test:debug": "PWDEBUG=1 DEBUG=pw:api cucumber-js",
+    "test:parallel": "npm run test -- --parallel"
   },
   "engines": {
     "node": ">=18"
