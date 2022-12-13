@@ -15,7 +15,8 @@
     "test": "cucumber-js",
     "test:all": "npm run test features/**/*.feature",
     "test:debug": "PWDEBUG=1 DEBUG=pw:api cucumber-js",
-    "test:parallel": "npm run test -- --parallel"
+    "test:parallel": "npm run test -- --parallel",
+    "trace": "npx playwright show-trace"
   },
   "engines": {
     "node": ">=18"

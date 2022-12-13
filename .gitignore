@@ -4,6 +4,7 @@ build
 #artifacts
 reports/*.html
 reports/*.json
+traces
 
 #debug data
 debug-console-formatter

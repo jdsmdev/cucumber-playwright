@@ -22,12 +22,10 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 5000,
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'https://playwright.dev',
-    /* When to take screenshots */
-    screenshot: 'only-on-failure',
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-    /* Record video when retrying the failed test. See https://playwright.dev/docs/videos#record-video */
-    video: 'on-first-retry',
+    /* Take screenshot on failed test */
+    screenshot: 'off',
+    /* Collect trace on failed test */
+    trace: 'off',
   },
 
   /* Configure projects for major browsers */
