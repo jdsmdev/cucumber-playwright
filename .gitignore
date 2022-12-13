@@ -2,7 +2,8 @@
 build
 
 #artifacts
-reports/report.html
+reports/*.html
+reports/*.json
 
 #debug data
 debug-console-formatter

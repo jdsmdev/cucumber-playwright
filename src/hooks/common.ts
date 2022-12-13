@@ -12,7 +12,7 @@ import { ITestCaseHookParameter } from '@cucumber/cucumber/lib/support_code_libr
 import { ensureDir } from 'fs-extra';
 
 let browser: ChromiumBrowser | FirefoxBrowser | WebKitBrowser;
-const tracesDir = 'traces';
+const TRACES_DIR = 'traces';
 
 setDefaultTimeout(config.timeout || -1);
 
@@ -24,7 +24,7 @@ BeforeAll(async function () {
       browser = await chromium.launch();
   }
 
-  await ensureDir(tracesDir);
+  await ensureDir(TRACES_DIR);
 });
 
 Before({ tags: '@ignore' }, async function () {
@@ -63,7 +63,7 @@ After(async function (this: ICustomWorld, { result }: ITestCaseHookParameter) {
       const image = await this.page().screenshot();
       image && (await this.attach(image, 'image/png'));
       await this.context?.tracing.stop({
-        path: `${tracesDir}/${this.testName}-${
+        path: `${TRACES_DIR}/${this.testName}-${
           this.startTime?.toISOString().split('.')[0]
         }trace.zip`,
       });
