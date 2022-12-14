@@ -16,12 +16,16 @@ export class PlaywrightWorld extends World {
   scenario?: messages.Pickle;
   startTime?: Date;
 
-  page(): Page {
+  anyPage(): Page {
     if (!this.pageObj) {
       throw new Error('No page is defined!');
     }
 
     return this.pageObj;
+  }
+
+  page<T>(pageConstructor: new (page: Page) => T): T {
+    return new pageConstructor(this.anyPage());
   }
 
   async startScenario(scenario: messages.Pickle, browser: Browser) {
@@ -76,7 +80,7 @@ export class PlaywrightWorld extends World {
   }
 
   async saveScreenshot() {
-    const image = await this.page().screenshot();
+    const image = await this.anyPage().screenshot();
     await this.attach(image, 'image/png');
   }
 
