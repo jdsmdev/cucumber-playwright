@@ -18,7 +18,7 @@ In the [cucumber.mjs](cucumber.mjs) file, you can modify reporting/plugins/forma
 
 ## Configure playwright
 
-In the [src/config.ts](config.ts) file, you can modify timeouts/headless/screenshot/trace/etc. on the playwright configuration.
+In the [config.ts](src/config.ts) file, you can modify timeouts/headless/screenshot/trace/etc. on the playwright configuration.
 
 
 ## Debug a scenario in Visual Studio Code
