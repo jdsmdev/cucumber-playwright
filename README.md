@@ -6,34 +6,39 @@ Starter project to write and debug cucumber-js features using playwright in Type
 
 - run the command `npm install`.
 
-## To execute the tests locally
+## Execute the tests locally
 
 - run the command `npm test <FEATURES>` to execute a feature.
 - run the command `npm run test:all` to execute all scenarios.
 - run the command `npm run test:parallel <NUMBER_OF_WORKERS>` to execute all scenarios in parallel.
 
-## To configure cucumber
+## Configure cucumber
 
 In the [cucumber.mjs](cucumber.mjs) file, you can modify reporting/plugins/formatters/etc. on the cucumber configuration.
 
-## To debug a scenario in Visual Studio Code
+## Configure playwright
+
+In the [src/config.ts](config.ts) file, you can modify timeouts/headless/screenshot/trace/etc. on the playwright configuration.
+
+
+## Debug a scenario in Visual Studio Code
 
 - set the breakpoints in the typescript code
 - run the command `npm test:debug <FEATURES>`
 
-## To check for typescript, linting and gherkin errors
+## Check for typescript, linting and gherkin errors
 
 - run the command `npm run build`.
 
-## To view the steps usage
+## View the steps usage
 
 - run the command `npm run steps-usage`.
 
-## To view the html report of the last run
+## View the html report of the last run
 
 - run the command `npm run report`.
 
-## To create a new step
+## Create a new step
 
 - first write the Given/When/Then sentence:
 
