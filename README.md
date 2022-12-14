@@ -24,7 +24,7 @@ In the [config.ts](src/config.ts) file, you can modify timeouts/headless/screens
 ## Debug a scenario in Visual Studio Code
 
 - set the breakpoints in the typescript code
-- run the command `npm test:debug <FEATURES>`
+- run the command `npm run test:debug <FEATURES>`
 
 ## Check for typescript, linting and gherkin errors
 

@@ -11,7 +11,7 @@
     "lint:fix": "eslint ./ --ext .js,.ts,.tsx --fix",
     "report": "open reports/report.html",
     "snippets": "cucumber-js features/**/*.feature --dry-run --format snippets",
-    "steps-usage": "cucumber-js features/**/*.feature --dry-run --format usage",
+    "steps-usage": "cucumber-js features/*.feature features/**/*.feature --dry-run --format usage",
     "test": "cucumber-js",
     "test:all": "npm run test features/**/*.feature",
     "test:debug": "PWDEBUG=1 DEBUG=pw:api cucumber-js",
