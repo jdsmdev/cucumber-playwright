@@ -44,12 +44,8 @@ export class PlaywrightWorld extends World {
       return;
     }
 
-    await this.attach(`Status: ${result.status}. Duration:${result.duration.seconds}s`);
-
-    if (result.status !== Status.PASSED) {
-      await this.saveScreenshot();
-      await this.endTracing();
-    }
+    await this.saveScreenshot(result.status);
+    await this.endTracing(result.status);
 
     await this.pageObj?.close();
     await this.context?.close();
@@ -67,8 +63,11 @@ export class PlaywrightWorld extends World {
     });
   }
 
-  async endTracing() {
-    if (config.use?.trace === 'off') {
+  async endTracing(status: messages.TestStepResultStatus) {
+    if (
+      config.use?.trace === 'off' ||
+      (config.use?.trace === 'retain-on-failure' && status === Status.PASSED)
+    ) {
       return;
     }
 
@@ -79,7 +78,14 @@ export class PlaywrightWorld extends World {
     });
   }
 
-  async saveScreenshot() {
+  async saveScreenshot(status: messages.TestStepResultStatus) {
+    if (
+      config.use?.screenshot === 'off' ||
+      (config.use?.screenshot === 'only-on-failure' && status === Status.PASSED)
+    ) {
+      return;
+    }
+
     const image = await this.anyPage().screenshot();
     await this.attach(image, 'image/png');
   }

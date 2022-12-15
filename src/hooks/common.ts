@@ -25,7 +25,9 @@ BeforeAll(async function () {
       browser = await chromium.launch();
   }
 
-  await ensureDir(TRACES_DIR);
+  if (config.use?.trace !== 'off') {
+    await ensureDir(TRACES_DIR);
+  }
 });
 
 Before(async function (this: PlaywrightWorld, { pickle }: ITestCaseHookParameter) {
