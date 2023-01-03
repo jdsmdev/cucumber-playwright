@@ -13,6 +13,7 @@ const config: PlaywrightTestConfig = {
 
   use: {
     headless: true,
+    locale: 'en',
     viewport: {
       width: 1920,
       height: 1080,

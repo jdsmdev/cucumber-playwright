@@ -16,13 +16,25 @@ BeforeAll(async function () {
 
   switch (config.projects[0].name) {
     case 'firefox':
-      browser = await firefox.launch();
+      browser = await firefox.launch({
+        ...config.use?.launchOptions,
+        headless: config.use?.headless || config.use?.launchOptions?.headless,
+        channel: config.use?.channel || config.use?.launchOptions?.channel,
+      });
       break;
     case 'webkit':
-      browser = await webkit.launch();
+      browser = await webkit.launch({
+        ...config.use?.launchOptions,
+        headless: config.use?.headless || config.use?.launchOptions?.headless,
+        channel: config.use?.channel || config.use?.launchOptions?.channel,
+      });
       break;
     default:
-      browser = await chromium.launch();
+      browser = await chromium.launch({
+        ...config.use?.launchOptions,
+        headless: config.use?.headless || config.use?.launchOptions?.headless,
+        channel: config.use?.channel || config.use?.launchOptions?.channel,
+      });
   }
 
   if (config.use?.trace !== 'off') {
