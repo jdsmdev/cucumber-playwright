@@ -14,27 +14,21 @@ BeforeAll(async function () {
     throw new Error('No browser is configured!');
   }
 
+  const options = {
+    ...config.use?.launchOptions,
+    headless: config.use?.headless || config.use?.launchOptions?.headless,
+    channel: config.use?.channel || config.use?.launchOptions?.channel,
+  };
+
   switch (config.projects[0].name) {
     case 'firefox':
-      browser = await firefox.launch({
-        ...config.use?.launchOptions,
-        headless: config.use?.headless || config.use?.launchOptions?.headless,
-        channel: config.use?.channel || config.use?.launchOptions?.channel,
-      });
+      browser = await firefox.launch(options);
       break;
     case 'webkit':
-      browser = await webkit.launch({
-        ...config.use?.launchOptions,
-        headless: config.use?.headless || config.use?.launchOptions?.headless,
-        channel: config.use?.channel || config.use?.launchOptions?.channel,
-      });
+      browser = await webkit.launch(options);
       break;
     default:
-      browser = await chromium.launch({
-        ...config.use?.launchOptions,
-        headless: config.use?.headless || config.use?.launchOptions?.headless,
-        channel: config.use?.channel || config.use?.launchOptions?.channel,
-      });
+      browser = await chromium.launch(options);
   }
 
   if (config.use?.trace !== 'off') {
